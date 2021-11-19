@@ -89,8 +89,9 @@ void setup() {
 
 //Main Loop. Get the prog num from binary dip switches. Draw the title on screen.
 //Check if the play button is pressed.
+int prog = 0;
 void loop(){
-  int prog = readSwitches();
+  prog = readSwitches();
   makeHeader(headers[prog]);
   checkPlay(prog);
   
@@ -133,6 +134,13 @@ void checkPlay(int prog){
   }
 }
 
+void drawProgress(int progress){
+
+  makeHeader(headers[prog]);
+  display.drawRect(0,20,display.width(),25, SSD1306_WHITE);
+  display.fillRect(0,20, progress ,25, SSD1306_WHITE);
+  display.display();
+}
 
 void typeMacro(int prog){
   switch(prog){
